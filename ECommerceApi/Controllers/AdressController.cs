@@ -40,6 +40,7 @@ namespace ECommerceApi.Controllers
             await _adressServices.CreateAdress(adress);
             return adress;
         }
+
         
         [HttpDelete("[action]")]
         public IActionResult Delete(Adress adress)

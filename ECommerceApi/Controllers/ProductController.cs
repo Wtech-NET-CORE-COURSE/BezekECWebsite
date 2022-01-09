@@ -22,5 +22,11 @@ namespace ECommerceApi.Controllers
             var products = await _productServices.GetAllProduct();
             return Ok(products);
         }
+        [HttpPost("[action]")]
+        public async Task<Product> Create(Product product)
+        {
+            await _productServices.CreateProduct(product);
+            return product;
+        }
     }
 }

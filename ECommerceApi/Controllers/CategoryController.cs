@@ -19,11 +19,10 @@ namespace ECommerceApi.Controllers
             _categoryServices = categoryServices;
         }
         [HttpGet("GetAll")]
-        //[Route("Categories")]
         public async Task<ActionResult<IEnumerable<Category>>> GetAll()
         {
-            var products = await _categoryServices.GetAllCategory();
-            return Ok(products);
+            var categories = await _categoryServices.GetAllCategory();
+            return Ok(categories);
         }
     }
 }
