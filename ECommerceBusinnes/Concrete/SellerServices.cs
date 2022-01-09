@@ -18,7 +18,7 @@ namespace ECommerceBusinnes.Concrete
         public async Task<Seller> CreateSeller(Seller seller)
         {
             var result =await _unitOfWork.Seller.AddAsync(seller);
-            await _unitOfWork.CommitAsync();//  :(
+            await _unitOfWork.CommitAsync();//  :)
             return result;
         }
 

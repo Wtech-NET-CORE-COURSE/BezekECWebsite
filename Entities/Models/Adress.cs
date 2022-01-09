@@ -17,12 +17,10 @@ namespace ECommerceEntities
         public int DistrictId { get; set; }
         [ForeignKey("City")]
         public int CityId { get; set; }
-        [Required]
-        [StringLength(200,MinimumLength =2,ErrorMessage = "Address must be between 2 and 200 characters.")]
         public string Explanation { get; set; }
         //relationship 
-        public District District { get; set; }
-        public City City { get; set; }
-        public User User { get; set; }
+        //public District District { get; set; }
+        //public City City { get; set; }
+        //public User User { get; set; }
     }
 }

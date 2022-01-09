@@ -18,37 +18,52 @@ namespace ECommerceApi.Controllers
         public AdressController(IAdressServices adressServices)
         {
             _adressServices = adressServices;
-        } 
-        [HttpGet]
+        }
+        /// <summary>
+        /// retrieve
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("[action]")]
         public async Task<ActionResult<IEnumerable<Adress>>>  Get()
         {
             var adress = await _adressServices.GetAllAdress();
             return Ok(adress);
         }
-        //[HttpPost]
-        //public IActionResult Post([FromBody] Adress adress)
-        //{
-        //    var createAdress = _adressServices.CreateAdress(adress);
-        //    return Ok(createAdress);
-        //}
-        //[HttpDelete]
-        //public IActionResult Delete(int id)
-        //{
-        //    if (_adressServices.GetAdressById(id)!=null)
-        //    {
-        //        _adressServices.DeleteAdress(id);
-        //        return Ok("Deleted adress");
-        //    }
-        //    return NotFound();
-        //}
-        //[HttpPut]
-        //public IActionResult Put([FromBody] Adress adress)
-        //{
-        //    if (_adressServices.GetAdressById(adress.AdressId) != null)
-        //    {
-        //        return Ok(_adressServices.UpdateAdress(adress));
-        //    }
-        //    return NotFound();
-        //}
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="adress"></param>
+        /// <returns></returns>
+        [HttpPost("[action]")]
+        public async Task<Adress> Create([FromBody] Adress adress)
+        {
+            await _adressServices.CreateAdress(adress);
+            return adress;
+        }
+        
+        [HttpDelete("[action]")]
+        public IActionResult Delete(Adress adress)
+        {
+            if (_adressServices.GetAdressById(adress.AdressId) != null)
+            {
+                _adressServices.DeleteAdress(adress);
+                return Ok("Deleted adress");
+            }
+            return NotFound();
+        }
+        /// <summary>
+        /// create
+        /// </summary>
+        /// <param name="adress"></param>
+        /// <returns></returns>
+        [HttpPut("[action]")]
+        public IActionResult Put([FromBody] Adress adress)
+        {
+            if (_adressServices.GetAdressById(adress.AdressId) != null)
+            {
+                return Ok(_adressServices.UpdateAdress(adress));
+            }
+            return NotFound();
+        }
     }
 }

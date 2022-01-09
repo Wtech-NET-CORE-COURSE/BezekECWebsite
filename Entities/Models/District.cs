@@ -10,9 +10,8 @@ namespace ECommerceEntities
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DistrictId { get; set; }
-        [Required]
         public string Name { get; set; }
-        public  Adress Adress { get; set; }
+        //public  Adress Adress { get; set; }
 
     }
 }

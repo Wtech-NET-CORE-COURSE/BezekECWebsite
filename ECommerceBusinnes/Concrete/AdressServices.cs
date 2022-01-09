@@ -19,7 +19,9 @@ namespace ECommerceBusinnes.Concrete
         }
         public async Task<Adress> CreateAdress(Adress adress)
         {
-            return await _unitOfWork.Address.AddAsync(adress);
+            var result = await _unitOfWork.Address.AddAsync(adress);
+            await _unitOfWork.CommitAsync();
+            return result;
         }
 
         public void DeleteAdress(Adress adress)
