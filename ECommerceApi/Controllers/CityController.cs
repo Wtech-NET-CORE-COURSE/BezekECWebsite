@@ -30,5 +30,24 @@ namespace ECommerceApi.Controllers
             await _cityServices.CreateCity(city);
             return city;
         }
+        [HttpDelete("[action]")]
+        public IActionResult Delete(City city)
+        {
+            if (_cityServices.GetCityById(city.CityId) != null)
+            {
+                _cityServices.DeleteCity(city);
+                return Ok("Deleted city");
+            }
+            return NotFound();
+        }
+        [HttpPut("[action]")]
+        public IActionResult Put([FromBody] City city)// objeyi body içinde göndereceğimiz anlamına gelmektedir. 
+        {
+            if (_cityServices.GetCityById(city.CityId) != null)
+            {
+                return Ok(_cityServices.UpdateCity(city));
+            }
+            return NotFound();
+        }
     }
 }

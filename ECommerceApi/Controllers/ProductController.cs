@@ -28,5 +28,24 @@ namespace ECommerceApi.Controllers
             await _productServices.CreateProduct(product);
             return product;
         }
+        [HttpDelete("[action]")]
+        public IActionResult Delete(Product product)
+        {
+            if (_productServices.GetProductById(product.ProductId) != null)
+            {
+                _productServices.DeleteProduct(product);
+                return Ok("Deleted product");
+            }
+            return NotFound();
+        }
+        [HttpPut("[action]")]
+        public IActionResult Put([FromBody] Product product)
+        {
+            if (_productServices.GetProductById(product.ProductId) != null)
+            {
+                return Ok(_productServices.UpdateProduct(product));
+            }
+            return NotFound();
+        }
     }
 }

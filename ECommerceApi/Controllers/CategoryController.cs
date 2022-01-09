@@ -24,5 +24,30 @@ namespace ECommerceApi.Controllers
             var categories = await _categoryServices.GetAllCategory();
             return Ok(categories);
         }
+        [HttpPost("[action]")]
+        public async Task<Category> Create(Category category)
+        {
+            await _categoryServices.CreateCategory(category);
+            return category;
+        }
+        [HttpDelete("[action]")]
+        public IActionResult Delete(Category category)
+        {
+            if (_categoryServices.GetCategoryById(category.CategoryId) != null)
+            {
+                _categoryServices.DeleteCategory(category);
+                return Ok("Deleted category");
+            }
+            return NotFound();
+        }
+        [HttpPut("[action]")]
+        public IActionResult Put([FromBody] Category category)
+        {
+            if (_categoryServices.GetCategoryById(category.CategoryId) != null)
+            {
+                return Ok(_categoryServices.UpdateCategory(category));
+            }
+            return NotFound();
+        }
     }
 }

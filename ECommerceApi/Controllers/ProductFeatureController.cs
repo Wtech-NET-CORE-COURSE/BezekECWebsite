@@ -30,5 +30,24 @@ namespace ECommerceApi.Controllers
             await _productFeatureServices.CreateProductFeature(productFeature);
             return productFeature;
         }
+        [HttpDelete("[action]")]
+        public IActionResult Delete(ProductFeature productFeature)
+        {
+            if (_productFeatureServices.GetProductFeatureById(productFeature.ProductFeatureId) != null)
+            {
+                _productFeatureServices.DeleteProductFeature(productFeature);
+                return Ok("Deleted product feature");
+            }           
+            return NotFound();
+        }
+        [HttpPut("[action]")]
+        public IActionResult Put([FromBody] ProductFeature productFeature)
+        {
+            if (_productFeatureServices.GetProductFeatureById(productFeature.ProductFeatureId) != null )
+            {
+                return Ok(_productFeatureServices.UpdateProductFeature(productFeature));
+            }
+            return NotFound();
+        }
     }
 }

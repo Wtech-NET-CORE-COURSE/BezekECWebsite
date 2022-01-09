@@ -30,5 +30,24 @@ namespace ECommerceApi.Controllers
             await _districtServices.CreateDistrict(district);
             return district;
         }
+        [HttpDelete("[action]")]
+        public IActionResult Delete(District district)
+        {
+            if (_districtServices.GetDistrictById(district.DistrictId) != null)
+            {
+                _districtServices.DeleteDistrict(district); 
+                return Ok("Deleted district");
+            }
+            return NotFound();
+        }
+        [HttpPut("[action]")]
+        public IActionResult Put([FromBody] District district)
+        {
+            if (_districtServices.GetDistrictById(district.DistrictId) != null)
+            {
+                return Ok(_districtServices.UpdateDistrict(district));
+            }
+            return NotFound();
+        }
     }
 }

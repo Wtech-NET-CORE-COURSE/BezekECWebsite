@@ -33,5 +33,24 @@ namespace ECommerceApi.Controllers
             await _sellerServices.CreateSeller(seller);
             return seller;
         }
+        [HttpDelete("[action]")]
+        public IActionResult Delete(Seller seller)
+        {
+            if (_sellerServices.GetSellerById(seller.SellerId) != null)
+            {
+                _sellerServices.DeleteSeller(seller);
+                return Ok("Deleted seller");
+            }
+            return NotFound();
+        }
+        [HttpPut("[action]")]
+        public IActionResult Put([FromBody] Seller seller)
+        {
+            if (_sellerServices.GetSellerById(seller.SellerId) != null)
+            {
+                return Ok(_sellerServices.UpdateSeller(seller));
+            }
+            return NotFound();
+        }
     }
 }

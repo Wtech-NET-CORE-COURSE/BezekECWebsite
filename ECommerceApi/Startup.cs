@@ -63,6 +63,31 @@ namespace ECommerceApi
             services.AddTransient<GenericHelperMethods>();
 
             services.AddSwaggerDocument();
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new Info
+            //    {
+            //        Title = "Fabrika API"
+            //        ,
+            //        Version = "v1"
+            //        ,
+            //        Description = "Fabrika'da üretilen ürünler hakkýnda bilgiler"
+            //        ,
+            //        Contact = new Contact
+            //        {
+            //            Name = "Burak Selim Þenyurt"
+            //            ,
+            //            Email = "",
+            //            Url = "http://www.buraksenyurt.com"
+            //        },
+            //        License = new License
+            //        {
+            //            Name = "Under GNU"
+            //            ,
+            //            Url = "http://www.buraksenyurt.com"
+            //        }
+            //    });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,6 +108,10 @@ namespace ECommerceApi
             app.UseRouting();
             app.UseOpenApi();
             app.UseSwaggerUi3();
+            //app.UseSwaggerUI(c=>
+            //{
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fabrika API v1.0");
+            //});
             app.UseDefaultFiles();
             //app.UseStaticFiles(new StaticFileOptions
             //{

@@ -30,6 +30,24 @@ namespace ECommerceApi.Controllers
             await _brandServices.CreateBrand(brand);
             return brand;
         }
-
+        [HttpDelete("[action]")]
+        public IActionResult Delete(Brand brand)
+        {
+            if (_brandServices.GetBrandById(brand.BrandId) != null)
+            {
+                _brandServices.DeleteBrand(brand);
+                return Ok("Deleted brand");
+            }
+            return NotFound();
+        }
+        [HttpPut("[action]")]
+        public IActionResult Put([FromBody] Brand brand)
+        {
+            if (_brandServices.GetBrandById(brand.BrandId) != null)
+            {
+                return Ok(_brandServices.UpdateBrand(brand));
+            }
+            return NotFound();
+        }
     }
 }

@@ -30,5 +30,24 @@ namespace ECommerceApi.Controllers
             await _saleServices.CreateSale(sale);
             return sale;
         }
+        [HttpDelete("[action]")]
+        public IActionResult Delete(Sale sale)
+        {
+            if (_saleServices.GetSaleById(sale.Id) != null)
+            {
+                _saleServices.DeleteSale(sale);
+                return Ok("Deleted sale");               
+            }
+            return NotFound();
+        }
+        [HttpPut("[action]")]
+        public IActionResult Put([FromBody] Sale sale)
+        {
+            if (_saleServices.GetSaleById(sale.Id) != null)
+            {
+                return Ok(_saleServices.UpdateSale(sale));
+            }
+            return NotFound();
+        }
     }
 }

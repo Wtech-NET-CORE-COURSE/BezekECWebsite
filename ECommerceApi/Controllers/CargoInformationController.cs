@@ -30,5 +30,24 @@ namespace ECommerceApi.Controllers
             await _cargoInformationServices.CreateCargoInformation(cargoInformation);
             return cargoInformation;
         }
+        [HttpDelete("[action]")]
+        public IActionResult Delete(CargoInformation cargoInformation)
+        {
+            if (_cargoInformationServices.GetCargoInformationById(cargoInformation.CargoId) != null)
+            {
+                _cargoInformationServices.DeleteCargoInformation(cargoInformation);
+                return Ok("Deleted Cargo Information");
+            }
+            return NotFound();
+        }
+        [HttpPut("[action]")]
+        public IActionResult Put([FromBody] CargoInformation cargoInformation)
+        {
+            if (_cargoInformationServices.GetCargoInformationById(cargoInformation.CargoId) != null)
+            {
+                return Ok(_cargoInformationServices.UpdateCargoInformation(cargoInformation)); 
+            }
+            return NotFound();
+        }
     }
 }
