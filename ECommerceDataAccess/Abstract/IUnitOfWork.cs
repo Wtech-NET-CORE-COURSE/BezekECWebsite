@@ -16,7 +16,10 @@ namespace ECommerceDataAccess.Abstract
         IDistrict District { get; }
         IProduct Product { get; }
         IProductFeature ProductFeature { get; }
+        IUserRole Roles { get; }
+        IUser Users { get; }
         ISale Sale { get; }
         ISeller Seller { get; }
+
     }
 }

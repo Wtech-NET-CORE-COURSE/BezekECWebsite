@@ -17,6 +17,8 @@ namespace ECommerceDataAccess.Concrete
         private DistrictRepository districtRepository;
         private ProductFeatureRepository productFeatureRepository;
         private ProductRepository productRepository;
+        private UserRepository _userRepository;
+        private UserRoleRepository _userRoleRepository;
         private SaleRepository saleRepository;
         private SellerRepository sellerRepository;
         public UnitOfWork(EComerceDBAccess eComerceDBAccess) 
@@ -31,6 +33,8 @@ namespace ECommerceDataAccess.Concrete
         public IDistrict District => districtRepository = districtRepository ?? new DistrictRepository(_eCommerceDBAccess);
         public IProductFeature ProductFeature => productFeatureRepository = productFeatureRepository ?? new ProductFeatureRepository(_eCommerceDBAccess);
         public IProduct Product => productRepository = productRepository ?? new ProductRepository(_eCommerceDBAccess);
+        public IUser Users => _userRepository = _userRepository ?? new UserRepository(_eCommerceDBAccess);
+        public IUserRole Roles => _userRoleRepository = _userRoleRepository ?? new UserRoleRepository(_eCommerceDBAccess);
         public ISale Sale => saleRepository = saleRepository ?? new SaleRepository(_eCommerceDBAccess);
         public ISeller Seller => sellerRepository = sellerRepository ?? new SellerRepository(_eCommerceDBAccess);
 
