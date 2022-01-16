@@ -15,11 +15,11 @@ namespace ECommerceApi.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserServices _context;
-        private readonly UserManager<User> _userManager;
-        public UserController(IUserServices context, UserManager<User> userManager)
+        //private readonly UserManager<User> _userManager;
+        public UserController(IUserServices context)
         {
             _context = context;
-            _userManager = userManager;
+           // _userManager = userManager;
         }
         //www.geldigitti.com/api/user/create
         [HttpPost("[action]")]

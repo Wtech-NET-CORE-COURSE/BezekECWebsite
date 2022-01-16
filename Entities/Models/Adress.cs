@@ -19,8 +19,8 @@ namespace ECommerceEntities
         public int CityId { get; set; }
         public string Explanation { get; set; }
         //relationship 
-        //public District District { get; set; }
-        //public City City { get; set; }
-        //public User User { get; set; }
+        public District District { get; set; }
+        public City City { get; set; }
+        public User User { get; set; }
     }
 }

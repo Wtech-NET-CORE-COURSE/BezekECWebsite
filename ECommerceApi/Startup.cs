@@ -60,6 +60,11 @@ namespace ECommerceApi
             services.AddScoped<IProductServices, ProductServices>();
             services.AddScoped<IAdressServices, AdressServices>();
             services.AddScoped<ISellerServices, SellerServices>();
+            services.AddScoped<IUserServices, UserServices>();
+            services.AddScoped<IDistrictServices, DistrictServices>();
+            services.AddScoped<ICityServices, CityServices>();
+
+
             services.AddTransient<GenericHelperMethods>();
 
             services.AddSwaggerDocument();

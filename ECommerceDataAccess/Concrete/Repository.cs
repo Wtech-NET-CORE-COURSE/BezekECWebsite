@@ -53,5 +53,7 @@ namespace ECommerceDataAccess.Concrete
             _eComerceDBAccess.Set<TEntity>().Update(entity);
             return entity;
         }
+
+        
     }
 }

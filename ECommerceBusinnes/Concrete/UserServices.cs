@@ -26,7 +26,7 @@ namespace ECommerceBusinnes.Concrete
 
         public async Task DeleteUser(User user)
         {
-            _unitOfWork.Users.Remove(user);
+            _unitOfWork.Users.RemoveAsync(user);
             await _unitOfWork.CommitAsync();
         }
 
